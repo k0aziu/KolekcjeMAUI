@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kolekcje.MainPage"
+             Title="Zarządzanie Kolekcjami Pokemonów">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Twoje Kolekcje" FontSize="Medium" HorizontalOptions="Center" TextColor="#5D8AA8"/>
+
+            <Entry x:Name="newCollectionName" Placeholder="Wpisz nazwę nowej kolekcji" TextColor="#5D8AA8" PlaceholderColor="#8AA2D3"/>
+
+            <Button Text="Dodaj Nową Kolekcję" Clicked="AddCollection_Clicked" BackgroundColor="#3B444B" TextColor="#C0D9D9"/>
+
+            <CollectionView x:Name="collectionsView" ItemsSource="{Binding Collections}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" CornerRadius="10" BorderColor="#3B444B" BackgroundColor="#1E3442">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding}" FontAttributes="Bold" FontSize="Medium" Margin="5" TextColor="#C0D9D9"/>
+                                <HorizontalStackLayout>
+                                    <Button Text="Edytuj" Clicked="EditCollection_Clicked" Margin="5" BindingContext="{Binding .}" BackgroundColor="#5D8AA8" TextColor="#FFFFFF"/>
+                                    <Button Text="Usuń" Clicked="DeleteCollection_Clicked" Margin="5" BindingContext="{Binding .}" BackgroundColor="#556B2F" TextColor="#FFFFFF"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

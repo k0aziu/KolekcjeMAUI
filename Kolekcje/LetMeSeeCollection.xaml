@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kolekcje.LetMeSeeCollection"
+             Title="LetMeSeeCollection">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="20">
+            <Label x:Name="CollectionNameLabel" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Medium" TextColor="#5D8AA8"/>
+            <Entry x:Name="newElementName" Placeholder="Nazwa elementu" TextColor="#5D8AA8" PlaceholderColor="#8AA2D3"/>
+            <Button Text="Dodaj Element" Clicked="AddElement_Clicked" BackgroundColor="#3B444B" TextColor="#C0D9D9"/>
+            <CollectionView x:Name="elementsView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" CornerRadius="10" BorderColor="#3B444B" BackgroundColor="#1E3442">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Medium" Margin="5" TextColor="#C0D9D9"/>
+                                <Label Text="{Binding State}" FontSize="Small" TextColor="#C0D9D9"/>
+                                <Label Text="{Binding Price, StringFormat='{0} złotych'}" FontSize="Small" TextColor="#C0D9D9"/>
+                                <HorizontalStackLayout>
+                                    <Button Text="Edytuj nazwę" Clicked="EditName_Clicked" Margin="5" CommandParameter="{Binding .}" BackgroundColor="#5D8AA8" TextColor="#FFFFFF"/>
+                                    <Button Text="Edytuj stan" Clicked="EditState_Clicked" Margin="5" CommandParameter="{Binding .}" BackgroundColor="#5D8AA8" TextColor="#FFFFFF"/>
+                                    <Button Text="Edytuj cenę" Clicked="EditPrice_Clicked" Margin="5" CommandParameter="{Binding .}" BackgroundColor="#5D8AA8" TextColor="#FFFFFF"/>
+                                    <Button Text="Usuń" Clicked="DeleteElement_Clicked" Margin="5" CommandParameter="{Binding .}" BackgroundColor="#556B2F" TextColor="#FFFFFF"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
